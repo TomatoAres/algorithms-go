@@ -6,13 +6,14 @@ import (
 )
 
 /* 找到出现次数最多的元素*/
-func getMax(data []int) (int, int) {
+func getMax(data []int) (max int,maxCount int) {
 	size := len(data)
-	max := data[0]
+	// 假设 第一个元素出现次数最多，此时次数为1，最大次数也为1
+	max = data[0]
 	count := 1
-	maxCount := 1
+	maxCount = 1
 	for i := 0; i < size; i++ {
-		count = 1
+		count = 1 // count遍历所有元素的重复个数
 		for j := i + 1; j < size; j++ {
 			if data[i] == data[j] {
 				count++
@@ -49,7 +50,7 @@ func getMax2(data []int) int {
 	return max
 }
 
-//Counting
+// Counting
 func getMax3(data []int, dataRange int) int {
 	max := data[0]
 	maxCount := 1
