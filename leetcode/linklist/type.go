@@ -1,10 +1,22 @@
 package linklist
 
+import "fmt"
+
 type LinkNode struct {
 	data int
 	next *LinkNode
 }
 
+func New() *LinkNode {
+	return nil
+}
+
+func (L *LinkNode) Travel() {
+	for L.next != nil {
+		fmt.Printf("%d\t", L.data)
+	}
+	fmt.Println()
+}
 func array2link(array []int) *LinkNode {
 	if len(array) == 0 {
 		return nil
@@ -17,7 +29,7 @@ func array2link(array []int) *LinkNode {
 		next: nil,
 	}
 
-	// 不得不引入 tmp
+	// 不得不引入 tmp,地址赋值
 	tmp := link
 	//var nextNode *LinkNode
 	for i := 1; i < len(array); i++ {
