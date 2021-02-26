@@ -1,10 +1,12 @@
 package main
 
 import "fmt"
+
 var count int
+
 func PrintSlice(array []int) {
 	count += 1
-	fmt.Printf("%d data:",count)
+	fmt.Printf("%d data:", count)
 	fmt.Println(array)
 }
 
