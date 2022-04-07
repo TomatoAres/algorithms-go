@@ -1,4 +1,4 @@
-package linklist
+package _06_revert
 
 func revert(Link *LinkNode) *LinkNode {
 	if Link == nil || Link.next == nil {

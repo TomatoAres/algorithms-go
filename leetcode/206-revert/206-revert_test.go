@@ -1,4 +1,4 @@
-package linklist
+package _06_revert
 
 import (
 	"github.com/stretchr/testify/assert"

@@ -7,53 +7,55 @@ type LinkNode struct {
 	next *LinkNode
 }
 
-func New() *LinkNode {
-	return nil
+// 太麻烦
+type LinkedList struct {
+	head *LinkNode
 }
 
-func (L *LinkNode) Travel() {
-	for L.next != nil {
-		fmt.Printf("%d\t", L.data)
+// New return &LinkedList
+// 有头结点的
+func New() *LinkedList {
+	// 这里返回的不是nil 了
+	// head 是nil，head.value 必然报错
+	return &LinkedList{}
+}
+
+func (l *LinkedList) Travel() {
+	if l.head != nil {
+		fmt.Printf("%d\t", l.head.data)
 	}
 	fmt.Println()
+	//fmt.Println(l.head.data)
+	fmt.Println(l.head.next)
 }
-func array2link(array []int) *LinkNode {
-	if len(array) == 0 {
-		return nil
-	}
 
-	// 构造头节点--链表
-	var link *LinkNode
-	link = &LinkNode{
-		data: array[0],
-		next: nil,
-	}
+func (l *LinkedList) Insert(i int) {
+	n := &LinkNode{data: i}
 
-	// 不得不引入 tmp,地址赋值
-	tmp := link
-	//var nextNode *LinkNode
-	for i := 1; i < len(array); i++ {
-		nextNode := &LinkNode{
-			data: array[i],
-			next: nil,
+	p := l.head
+	l.head.next = n
+	n.next = p
+
+}
+
+func (l *LinkedList) Append(i int) {
+	p := l.head
+	for p.next != nil {
+		p = p.next
+	}
+	p.next = &LinkNode{data: i}
+}
+
+func Array2LinkedList(array []int) *LinkedList {
+	l := New()
+
+	for _, i := range array {
+		node := LinkNode{
+			data: i,
 		}
-		tmp.next = nextNode
-		tmp = tmp.next
+		//l.Insert(i)
+		l.head.next = &node
 	}
 
-	return link
-}
-
-func link2array(link *LinkNode) []int {
-	// 垃圾
-	//if link == nil{
-	//	return nil
-	//}
-
-	var result []int
-	for link != nil {
-		result = append(result, link.data)
-		link = link.next
-	}
-	return result
+	return l
 }
