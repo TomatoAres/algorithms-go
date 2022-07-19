@@ -22,7 +22,7 @@ func TestLength(t *testing.T) {
 
 func TestArray2LL(t *testing.T) {
 	//arr := []int{}
-	assert.Equal(t, New(), Array2LL([]int{}))
+	assert.Equal(t, New(), Array2LL2([]int{}))
 	assert.Equal(t,
 		&LinkedList{Next: &LinkNode{Data: 0}},
 		Array2LL([]int{0}))
@@ -60,5 +60,21 @@ func TestTravel(t *testing.T) {
 	t.Log(l.Length())
 	l.Travel()
 
+	t.Logf("%#v", LL2Array(l))
+}
+
+func TestAppend(t *testing.T) {
+	l := New()
+	l.Append(1)
+	l.Append(2)
+	l.Append(3)
+	t.Logf("%#v", LL2Array(l))
+}
+
+func TestAppend2(t *testing.T) {
+	l := New()
+	l.Append2(1)
+	l.Append2(2)
+	l.Append2(3)
 	t.Logf("%#v", LL2Array(l))
 }
